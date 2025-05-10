@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import logging
 from pyzbar.pyzbar import decode
+import argparse
 
 # Constants
 ASPECT_RATIO_MIN = 0.9  # Adjusted from 0.8
@@ -181,8 +182,14 @@ def draw_lines(img, points, axis):
             if points[i][0] == points[i - 1][0]:
                 cv2.line(img, points[i - 1], points[i], (0, 255, 255), 2)
 
-def main(image_path):
+def main():
     """Main function to process the image and detect QR code markers."""
+    parser = argparse.ArgumentParser(description="Processa uma imagem para detectar marcadores de QR Code.")
+    parser.add_argument("image_path", type=str, help="Caminho para a imagem a ser processada.")
+    args = parser.parse_args()
+
+    image_path = args.image_path
+
     try:
         img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
         if img is None:
@@ -258,5 +265,4 @@ def main(image_path):
         logging.error(f"erro: {e}")
 
 if __name__ == "__main__":
-    image_path = '/home/lord_werther/Downloads/qr/qrcode_v55.png'
-    main(image_path)
+    main()
