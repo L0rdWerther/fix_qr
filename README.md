@@ -28,5 +28,5 @@ cd fix_qr
 2. Execute o script principal:
 
 ```bash
-python qr-c3.py /caminho/para/a/imagem.png
+python qr_pen(actual)/qr-c3.py /caminho/para/a/imagem.png
 ```
